@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "91000230799",
+    "project_id": "medisante-b865d",
+    "storage_bucket": "medisante-b865d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91000230799:android:e53ad88c15a682898571fa",
+        "android_client_info": {
+          "package_name": "com.iringabo.traitement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOCpJJ7FqTRWL_SFtfVmRgfcFnb9Dco9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

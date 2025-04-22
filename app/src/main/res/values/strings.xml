@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MediSante</string>
+    <string name="citation">Au service de la santé</string>
+    <string name="welcome_image_description">Logo application</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="welcome_msg">Hello, There. Welcome Back</string>
+    <string name="hint_user">Username</string>
+    <string name="hint_pass">Password</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_traite">TraiteActivity</string>
+    <string name="title_activity_treat_man">TreatManActivity</string>
+    <string name="view_treatment">View</string>
+    <string name="edit_treatment">Edit</string>
+    <string name="delete_treatment">Delete</string>
+</resources>
