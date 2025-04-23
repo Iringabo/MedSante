@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -23,6 +24,7 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
+@Suppress("DEPRECATION")
 class DashboardActivity : ComponentActivity() {
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val db   by lazy { FirebaseFirestore.getInstance() }
@@ -49,7 +51,29 @@ class DashboardActivity : ComponentActivity() {
         }
 
         loadDashboard()
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.nav_dashboard -> {
+                    // Already in dashboard
+                    true
+                }
+                R.id.nav_today -> {
+                    startActivity(Intent(this, TodayTreatmentsActivity::class.java))
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+
+                else -> false
+                    }
+            }
     }
+
+
 
     private fun loadDashboard() {
         val uid = auth.currentUser?.uid ?: return
