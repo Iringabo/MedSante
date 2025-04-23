@@ -5,6 +5,7 @@ package com.iringabo.traitement
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.iringabo.traitement.model.Treatment
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 class DashboardActivity : ComponentActivity() {
     private val auth by lazy { FirebaseAuth.getInstance() }
@@ -78,11 +80,19 @@ class DashboardActivity : ComponentActivity() {
 
             // assume t.times is a comma‑separated string like "08:00,12:00,18:00"
             t.times.mapNotNull { timeStr ->
+                try {
                     val time = LocalTime.parse(timeStr, timeFmt)
                     if (start <= today && end >= today && time.isAfter(now)) {
                         timeStr to t.medName
                     } else null
+                } catch (e: DateTimeParseException) {
+                    Log.e(
+                        "DashboardActivity",
+                        "Invalid time format: $timeStr in treatment ${t.medName}"
+                    )
+                    null
                 }
+            }
         }
             .sortedBy { it.first }   // String.compareTo is operator fun
 
